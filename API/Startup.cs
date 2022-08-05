@@ -1,15 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using API.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 namespace API
@@ -31,6 +21,12 @@ namespace API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIv5", Version = "v1" });
+            });
+
+            // Add our DbContext as a service inside ConfigureServices method here
+            services.AddDbContext<StoreContext>(opt =>
+            {
+                opt.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
         }
 
