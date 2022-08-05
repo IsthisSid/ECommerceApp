@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Store our list of products inside our function App(); make use of the products inside it as well using React hooks - useState
 function App() {
@@ -6,6 +6,13 @@ function App() {
     {name: "product1", price: 100.00},
     {name: "product2", price: 200.00},
   ]);
+
+// Fetch products from our API and set products inside our state
+  useEffect(() => {
+    fetch('http://localhost:5135/api/products')
+      .then(response => response.json())
+      .then(data => setProducts(data)) // method that changes the state and causes a rerender
+  }, []) // Add empty array of dependenciecs to prevent rerendering so that this method will only be called once
 
 // Add an additional product to our list of products
 function addProduct() {
