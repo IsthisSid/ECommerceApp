@@ -1,7 +1,8 @@
-import { Product } from "../../app/models/product";
-
 // <> are React components; we can remove this line below, but remember that <> replaces using <Fragment></Fragment>
 import { Fragment } from "react";
+
+import { Product } from "../../app/models/product";
+import { Avatar, Button, List, ListItem, ListItemAvatar, ListItemText } from "@mui/material";
 
 // Create interface inside our component and call it Props. 
 // Inside here, we specify the types of things that we're passing down and can expect to receive 
@@ -16,12 +17,19 @@ interface Props {
 export default function Catalog({ products, addProduct }: Props) {
     return (
         <>
-            <ul>
+            <List>
                 {products.map(product => (
-                    <li key={product.id}>{product.name} - {product.price}</li>
+                    <ListItem key={product.id}>
+                        <ListItemAvatar>
+                            <Avatar src={product.pictureUrl} />
+                        </ListItemAvatar>
+                        <ListItemText>
+                            {product.name} - {product.price}
+                        </ListItemText>
+                    </ListItem>
                 ))}
-            </ul>
-            <button onClick={addProduct}>Add Product</button>
+            </List>
+            <Button variant='contained' onClick={addProduct}>Add Product</Button>
         </>
     )
 }
