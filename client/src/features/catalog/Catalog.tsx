@@ -1,28 +1,25 @@
 
 import { Product } from "../../app/models/product";
-import { Button } from "@mui/material";
 import ProductList from "./ProductList";
+import { useEffect, useState } from "react";
 
-// Create interface inside our component and call it Props. 
-interface Props {
-    products: Product[];
-    addProduct: () => void;
-}
+
 
 // Create function to display our Catalog of products fetched from our API
-// Create button with onClick that allows user to add a product
-export default function Catalog({ products, addProduct }: Props) {
+export default function Catalog() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+// Fetch products from our API and set products inside our state
+  useEffect(() => {
+    fetch('http://localhost:5135/api/products')
+      .then(response => response.json())
+      .then(data => setProducts(data)) // method that changes the state and causes a rerender
+  }, []) // Add empty array of dependencies to prevent rerendering so that this method will only be called once
+
     return (
         <>
             <ProductList products={products} />
-            <Button variant='contained' onClick={addProduct}>Add Product</Button>
         </>
     )
 }
 
-/* Notes: 
-    - <> are React components; replaces using <Fragment></Fragment>
-    - Inside interface Props, we specify the types of things that we're passing down and can expect to receive 
-    inside our parameter for this react component (examples: list of products and addProduct).
-    - We will be using these a lot in our app.
-*/
