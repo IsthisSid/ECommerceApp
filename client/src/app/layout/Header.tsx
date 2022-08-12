@@ -1,6 +1,7 @@
 import { AppBar, List, ListItem, Switch, Toolbar, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
+
 interface Props {
     darkMode: boolean;
     handleThemeChange: () => void;
@@ -9,7 +10,7 @@ interface Props {
 const midLinks = [
     {title: 'catalog', path: '/catalog'},
     {title: 'about', path: '/about'},
-    {title: 'contact', path: '/contact'},
+    {title: 'contact', path: '/contact'}
 ]
 const rightLinks = [
     {title: 'login', path: '/login'},
@@ -26,7 +27,8 @@ export default function Header({darkMode, handleThemeChange}: Props) {
                 <Switch checked={darkMode} onChange={handleThemeChange}/>
                 <List sx={{display: 'flex'}}>
                     {midLinks.map(({title, path}) => (
-                        <ListItem component={NavLink}
+                        <ListItem 
+                        component={NavLink}
                         to={path}
                         key={path}
                         sx={{color: 'inherit', typography: 'h6'}}>
@@ -40,8 +42,9 @@ export default function Header({darkMode, handleThemeChange}: Props) {
                         component={NavLink}
                         to={path}
                         key={path}
-                        sx={{color: 'inherit', typography: 'h6'}}>
-                            {title.toUpperCase()}
+                        
+                         sx={{color: 'inherit', typography: 'h6'}}>
+                             {title.toUpperCase()}
                         </ListItem>
                     ))}
                 </List>
