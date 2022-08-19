@@ -456,3 +456,7 @@ $RECYCLE.BIN/
 !.vscode/launch.json
 !.vscode/extensions.json
 API/appsettings.json
+
+## Ignore any files in /bin and /obj folders
+**/bin/*
+**/obj/*
