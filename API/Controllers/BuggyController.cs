@@ -32,8 +32,8 @@ namespace API.Controllers
             // User fills out form and haven't supplied the required fields: then our API controller can return a validation error response.
         }
         [HttpGet("server-error")]
-        public ActionResult GetServorError(){
-            throw new Exception("This is a servor error");
+        public ActionResult GetServerError(){
+            throw new Exception("This is a server error");
         }
     }
 }
