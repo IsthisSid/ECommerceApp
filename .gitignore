@@ -460,3 +460,10 @@ API/appsettings.json
 ## Ignore any files in /bin and /obj folders
 **/bin/*
 **/obj/*
+API/obj/Debug/net6.0/project.razor.json
+API/bin/Debug/net6.0/API.dll
+API/bin/Debug/net6.0/API.pdb
+API/obj/staticwebassets.pack.sentinel
+API/obj/Debug/net6.0/API.csproj.CoreCompileInputs.cache
+API/obj/Debug/net6.0/refint/API.dll
+
